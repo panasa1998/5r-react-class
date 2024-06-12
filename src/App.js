@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+import {Heading1,Heading2,Heading3,Heading4,Heading5,Heading6} from "./Components/heading.js";
+import Table from "./Components/Table/tableheading.js"
+const App=()=>{
+  return(
+    <div>
+      <Heading1/>
+      <Heading2/>
+      <Heading3/>
+      <Heading4/>
+      <Heading5/>
+      <Heading6/> 
+      <Table> </Table>
     </div>
-  );
+  )
 }
-
 export default App;
