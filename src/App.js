@@ -7,6 +7,8 @@ import { fakeData } from "./Components/FakeData/fakedata.js";
 import ImageComponent from "./Components/ImageComponent/image.js";
 import { Heading1 } from "./Components/heading.js";
 
+// import ButtonComponentClass from "./Components/classComponent/classComponent";
+
 const App=()=>{
   return(
     <div>
