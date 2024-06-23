@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import ButtonComponent from "../Button/button";
 
-class ButtonComponentClass extends Component() {
+class ButtonComponentClass extends Component{
   state = {
     text1: "subscribe",
     text2: "subscribed",

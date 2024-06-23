@@ -2,7 +2,9 @@
 // import ButtonNew from "./Components/class-components/class.js";
 // import ButtonComponentClass from "./Components/class-components/classComponent.js"
 
-import TodoComponent from "./Components/class-components/todo";
+import FakeData from "./Components/class-components/fetch.js";
+
+//import TodoComponent from "./Components/class-components/todo";
 
 
 const App=()=>{
@@ -10,7 +12,9 @@ const App=()=>{
     <div>
       {/* <ButtonComponentClass/>
       <ButtonNew/> */}
-      <TodoComponent/>
+      {/* <TodoComponent/> */}
+      <FakeData/>
+      
     </div>
   )
 }
