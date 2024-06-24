@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import ButtonComponent from "../Button/button";
+//import ButtonComponent from "../Button/button";
 
 class ButtonComponentClass extends Component{
   state = {
     text1: "subscribe",
-    text2: "subscribed",
+    text2: "unsubscribe",
     isSubscribe: false,
   };
   subscribeHandler = () => {
