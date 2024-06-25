@@ -2,7 +2,9 @@
 // import ButtonNew from "./Components/class-components/class.js";
 //  import ButtonComponentClass from "./Components/class-components/classComponent.js"
 
- import RecepieData from "./Components/class-components/recepieData";
+import ParentComponent from "./Components/pureComponents/parent";
+
+ //import RecepieData from "./Components/class-components/recepieData";
 
 // import FakeData from "./Components/class-components/fetch.js";
 
@@ -16,9 +18,11 @@ const App=()=>{
       <ButtonNew/> */}
       {/* <TodoComponent/> */}
       {/* <FakeData/> */}
-      <RecepieData/>
+      {/* <RecepieData/> */}
       {/* <ButtonComponentClass/> */}
       {/* <TodoComponent/> */}
+
+      <ParentComponent/>
       
     </div>
   )
