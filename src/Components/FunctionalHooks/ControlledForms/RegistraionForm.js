@@ -1,42 +1,83 @@
-//import './App.css';
+import { useState } from 'react';
+
 
 
 import { LockClosedIcon } from '@heroicons/react/solid'
-import { useRef } from 'react'
 
-export default function Form() {
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const rememberMeRef = useRef()
+export default function SignUpForm() {
+    const [userName,setUserName]=useState("");
+    const [userNameError,setUserNameError]=useState(false);
+    const [password,setPassword]=useState("")
+    const [passwordError,setPasswordError]=useState(false);
+    const [rememberMe,setRememberMe]=useState("")
+    const [serverError,setserverError]=useState(false)
+    const userNameValidation=(userName)=>{
+        let validUserName=false
+        if(userName.length>10){
+            validUserName=false
+        }
+        else{
+            validUserName=true;
+        }
+        return validUserName;
+    }
 
     const submitHandler=(event)=>{
-      event.preventDefault();
-      const email=emailRef.current.value;
-      const password=passwordRef.current.value;
-      const rememberMe=rememberMeRef.current.checked;
+        event.preventDefault();
 
-      console.log(email,password,rememberMe)
-      if(email && password){
-        asyncPostApiCall(email,password)
+        const userName=event.target.value;
+        setUserName(userName)
+        console.log(userName);
+        if(userNameValidation(userName)){
+            setUserNameError(false)
+        }
+        else{
+            setUserNameError(true)
+        }
+    }
+
+
+    const passwordValidation=(password)=>{
+       return password.length>10?false:true;
+    }
+    const passwordHandler=(event)=>{
+        const userEnteredPassword=event.target.value;
+        setPassword(userEnteredPassword);
+        if(passwordValidation(password)){
+            setPassword(userEnteredPassword)
+            setPasswordError(false)
+        }
+        else{
+            setPasswordError(true)
+        }
+        
+    }
+    const onSubmitHandler=(event)=>{
+      event.preventDefault();
+      if(!userNameError && !passwordError){
+        //hit the server
+        apiCall(userName,password)
       }
     }
-    
-    const asyncPostApiCall=()=>{
+    const apiCall=(userName,password)=>{
       fetch('https://dummyjson.com/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          
           username: 'emilys',
           password: 'emilyspass',
           expiresInMins: 30, // optional, defaults to 60
         })
       })
       .then(res => res.json())
-      .then(console.log);
-     }
-  return (
+      .then(response=>{
+        console.log(response)
+      });
+    }
 
+   
+    
+  return (
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -53,28 +94,29 @@ export default function Form() {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={submitHandler}>
+          <form className="mt-8 space-y-6" onSubmit={onSubmitHandler}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
-                  Email address
+                  userName
                 </label>
                 <input
                   id="email-address"
                   name="email"
-                  type="email"
+                  type="text"
                   autoComplete="email"
                   required
-                  ref={emailRef}
-
                   className="appearance-none rounded-none relative block
                   w-full px-3 py-2 border border-gray-300
                   placeholder-gray-500 text-gray-900 rounded-t-md
                   focus:outline-none focus:ring-indigo-500
                   focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder="UserName"
+                  value={userName}
+                  onChange={submitHandler}
                 />
+                {userNameError && <span>userName should be less than 10 characters</span>}
               </div>
               <div>
                 <label htmlFor="password" className="sr-only">
@@ -86,14 +128,16 @@ export default function Form() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  ref={passwordRef}
                   className="appearance-none rounded-none relative block
                   w-full px-3 py-2 border border-gray-300
                   placeholder-gray-500 text-gray-900 rounded-b-md
                   focus:outline-none focus:ring-indigo-500
                   focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
+                  value={password}
+                  onChange={passwordHandler}
                 />
+               {passwordError && <span>password should be atleast 8 characters</span> }
               </div>
             </div>
 
@@ -103,9 +147,9 @@ export default function Form() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  ref={rememberMeRef}
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500
                   border-gray-300 rounded"
+                  value={rememberMe}
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
@@ -118,8 +162,8 @@ export default function Form() {
                 </a>
               </div>
             </div>
-
             <div>
+            { !userNameError && !passwordError &&
               <button
                 type="submit"
                 className="group relative w-full flex justify-center
@@ -134,6 +178,7 @@ export default function Form() {
                 </span>
                 Sign in
               </button>
+}
             </div>
           </form>
         </div>

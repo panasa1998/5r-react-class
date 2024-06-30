@@ -1,6 +1,8 @@
 //import UseStateExample from "./Components/FunctionalHooks/UseState/useState";
 
-import Form from "./Components/FunctionalHooks/UseRef/registrationForm.js";
+import SignUpForm from "./Components/FunctionalHooks/ControlledForms/RegistraionForm";
+
+//import Form from "./Components/FunctionalHooks/UseRef/registrationForm.js";
 
 //import TodoComponent from "./Components/FunctionalHooks/UseState/todo";
 
@@ -12,7 +14,8 @@ const App=()=>{
       {/* <UseStateExample/> */}
       {/* <TodoComponent/> */}
       {/* <RegistrationForm/> */}
-      <Form/>
+      {/* <Form/> */}
+      <SignUpForm/>
     </div>
   )
 }
