@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeScreen from "../Screens/homeScreen";
 import AboutScreen from "../Screens/aboutScreen";
@@ -7,8 +7,21 @@ import SettingScreen from "../Screens/settingScreen";
 import InvalidScreen from "../Screens/invalidScreen";
 import DynamicPage from "../Screens/dynamicPage";
 
+export const ProfileWrapper=createContext();
+
 function Stack(){
+    const [profileInfo,setProfileInfo]=useState({
+        name:"Raju"
+    })
+
+    const changeName=(name)=>{
+        setProfileInfo({...profileInfo,name:name})
+    }
     return(
+        <ProfileWrapper.Provider value={{
+            profileInfo,
+            changeName,
+        }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" Component={HomeScreen}/>
@@ -20,6 +33,9 @@ function Stack(){
                     <Route path="/:location/:restaurentId/info" Component={DynamicPage}/>
                 </Routes>
             </BrowserRouter>
+
+        </ProfileWrapper.Provider>
+            
     )
 }
 export default Stack;

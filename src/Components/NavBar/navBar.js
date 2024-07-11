@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./NavBar.css"
+
 
 function NavBar(){
-    const linkSyle={
+    const NavLinkSyle={
         textDecoration:"none",
     }
     const listStyle={
@@ -15,28 +17,28 @@ function NavBar(){
         <div className="container-fluid">
           <ul className="navbar-nav">
             <li className="nav-item" style={listStyle}>
-              {/* <a className="nav-link active" href="#">
+              {/* <a className="nav-NavLink active" href="#">
                 Active
               </a> */}
-              <Link to={"/"} style={linkSyle}>Home</Link>
+              <NavLink to={"/"} style={NavLinkSyle}>Home</NavLink>
             </li>
             <li className="nav-item" style={listStyle}>
-              {/* <a className="nav-link" href="#">
-                Link
+              {/* <a className="nav-NavLink" href="#">
+                NavLink
               </a> */}
-              <Link to={"/about"} style={linkSyle}>About</Link>
+              <NavLink to={"/about"} style={NavLinkSyle}>About</NavLink>
             </li>
             <li className="nav-item" style={listStyle}>
-              {/* <a className="nav-link" href="#">
-                Link
+              {/* <a className="nav-NavLink" href="#">
+                NavLink
               </a> */}
-              <Link to={"/contact"} style={linkSyle}>Contact</Link>
+              <NavLink to={"/contact"} style={NavLinkSyle}>Contact</NavLink>
             </li>
             <li className="nav-item" style={listStyle}>
-              {/* <a className="nav-link" href="#">
-                Link
+              {/* <a className="nav-NavLink" href="#">
+                NavLink
               </a> */}
-              <Link to={"/setting"} style={linkSyle}>Setting</Link>
+              <NavLink to={"/setting"} style={NavLinkSyle}>Setting</NavLink>
             </li>
             
           </ul>
