@@ -1,6 +1,10 @@
 //import UseStateExample from "./Components/FunctionalHooks/UseState/useState";
 //import React from "react";
 
+import UseReducerHookEx2 from "./Components/useReducerHook/useReduceEx-2";
+import UseReducerHookEx1 from "./Components/useReducerHook/useReducerEx-1";
+//import UseReducerHookEx2 from "./Components/useReducerHook/useReducerEx-2";
+
 //import RecepieTable from "./Components/Table/RecepieTable";
 //import RecepieData from "./Components/useEffect/useEffect";
 
@@ -8,7 +12,7 @@
 
 
 //import Example from "./Components/NavBar/example.js";
-import Stack from "./Navigations/stack.js";
+// import Stack from "./Navigations/stack.js";
 
 //import LoginForm from "./Components/FunctionalHooks/ControlledForms/practice";
 
@@ -23,11 +27,14 @@ import Stack from "./Navigations/stack.js";
 const App=()=>{
   return(
     <div>
-      <Stack/>
+      {/* <Stack/> */}
 {/* 
       <RecepieData/> */}
       {/* <RecepieTable/> */}
       {/* <RecepieData/> */}
+
+      <UseReducerHookEx1/>
+      <UseReducerHookEx2/>
 
     </div>
   )
